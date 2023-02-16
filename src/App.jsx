@@ -1,12 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigation from './navigation/BottomTabNavigation';
+import { Text } from 'react-native';
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <BottomTabNavigation />
-    </NavigationContainer>
-  );
+  return <Text>App</Text>;
 };
 
 export default App;
