@@ -8,7 +8,12 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      initialRouteName='HOME'
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tab.Screen name='HOME' component={Home} />
       <Tab.Screen name='CALENDAR' component={Calendar} />
       <Tab.Screen name='LIBRARY' component={Library} />
