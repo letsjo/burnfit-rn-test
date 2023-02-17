@@ -11,7 +11,7 @@ const Calendar = () => {
 
   const [year, setYear] = useState(nowDate.year);
   const [month, setMonth] = useState(nowDate.month);
-  const [date, setDate] = useState(nowDate.date);
+  const [selectDate, setSelectDate] = useState({ ...nowDate });
   const [dateList, setDateList] = useState(
     getCalendarDate({ year, month }),
   );
@@ -34,10 +34,10 @@ const Calendar = () => {
     }
   };
 
-  const onPressDate = (selectDate) => {
-    if (year !== selectDate.year) setYear(selectDate.year);
-    if (month !== selectDate.month) setMonth(selectDate.month);
-    setDate(selectDate.date);
+  const onPressDate = (pressDate) => {
+    setSelectDate({ ...pressDate });
+    setYear(pressDate.year);
+    setMonth(pressDate.month);
   };
 
   useEffect(() => {
@@ -53,7 +53,8 @@ const Calendar = () => {
         handleNextMonth={handleNextMonth}
       />
       <Body
-        date={date}
+        selectDate={selectDate}
+        nowDate={nowDate}
         dateList={dateList}
         onPressDate={onPressDate}
       />
