@@ -10,8 +10,14 @@ const getCalendarDate = ({ year, month }) => {
     { length: previousLastDay + 1 },
     (v, i) => previousLastDate - previousLastDay + i,
   );
-  const currentDays = Array.from({ length: currentLastDate }, (v, i) => i + 1);
-  const nextDays = Array.from({ length: 6 - currentLastDay }, (v, i) => i + 1);
+  const currentDays = Array.from(
+    { length: currentLastDate },
+    (v, i) => i + 1,
+  );
+  const nextDays = Array.from(
+    { length: 6 - currentLastDay },
+    (v, i) => i + 1,
+  );
 
   return {
     previous: {
