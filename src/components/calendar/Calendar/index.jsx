@@ -32,7 +32,12 @@ const Calendar = () => {
 
   return (
     <View style={styles.container}>
-      <Header year={year} month={month} />
+      <Header
+        year={year}
+        month={month}
+        handlePrevMonth={handlePrevMonth}
+        handleNextMonth={handleNextMonth}
+      />
       <Body />
     </View>
   );
