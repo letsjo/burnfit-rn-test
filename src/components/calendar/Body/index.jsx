@@ -12,49 +12,44 @@ const Body = ({ selectDate, nowDate, dateList, onPressDate }) => {
       <View style={styles.dayContainer}>
         {DAY_STRING.map((day) => (
           <View style={styles.dayBox}>
-            <Text
-              style={{ color: day.color, fontSize: 16 }}
-              key={day.id}
-            >
+            <Text style={{ color: day.color }} key={day.id}>
               {day.name}
             </Text>
           </View>
         ))}
       </View>
-      <View style={styles.dayContainer}>
+      <View style={styles.dateContainer}>
         {Object.keys(dateList).map((state) => {
-          let key = 0;
           const year = dateList[state].year;
           const month = dateList[state].month;
-          const color = state === 'current' ? 'black' : 'gray';
-          return dateList[state].days.map((day) => {
+          const color = state === 'current' ? '#222' : '#c8cccf';
+          return dateList[state].days.map((date) => {
             const fontWeight =
-              nowDate.date === day &&
+              nowDate.date === date &&
               nowDate.month === month &&
               nowDate.year === year
                 ? '900'
                 : 'normal';
-            const seleced =
-              selectDate.day === day &&
+            const selected =
+              selectDate.date === date &&
               selectDate.month === month &&
               selectDate.year === year
                 ? true
                 : false;
             return (
               <TouchableOpacity
-                onPress={() => onPressDate({ year, month, day })}
-                style={styles.dayBox}
-                key={key++}
+                onPress={() => onPressDate({ year, month, date })}
+                style={styles.dateBox}
+                key={`${year}${month}${date}`}
               >
-                <View style={{ ...(seleced && styles.seleced) }}>
+                <View style={{ ...(selected && styles.selected) }}>
                   <Text
                     style={{
                       color,
                       fontWeight,
-                      fontSize: 16,
                     }}
                   >
-                    {day}
+                    {date}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -79,9 +74,20 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 16,
+    marginVertical: 15,
   },
-  seleced: {
+  dateContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  dateBox: {
+    width: '14.2%',
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 15,
+  },
+  selected: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
