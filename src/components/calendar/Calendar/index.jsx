@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Header from '../Header';
 import Body from '../Body';
 import getNowDate from '../../../utils/getNowDate';
+import getCalendarDate from '../../../utils/getCalendarDate';
 
 const Calendar = () => {
   const nowDate = getNowDate();
@@ -11,6 +12,9 @@ const Calendar = () => {
   const [year, setYear] = useState(nowDate.year);
   const [month, setMonth] = useState(nowDate.month);
   const [date, setDate] = useState(nowDate.date);
+  const [dateList, setDateList] = useState(
+    getCalendarDate({ year, month }),
+  );
 
   const handlePrevMonth = () => {
     if (month === 1) {
@@ -30,6 +34,16 @@ const Calendar = () => {
     }
   };
 
+  const onPressDate = (selectDate) => {
+    if (year !== selectDate.year) setYear(selectDate.year);
+    if (month !== selectDate.month) setMonth(selectDate.month);
+    setDate(selectDate.date);
+  };
+
+  useEffect(() => {
+    setDateList(getCalendarDate({ year, month }));
+  }, [year, month]);
+
   return (
     <View style={styles.container}>
       <Header
@@ -38,7 +52,11 @@ const Calendar = () => {
         handlePrevMonth={handlePrevMonth}
         handleNextMonth={handleNextMonth}
       />
-      <Body />
+      <Body
+        date={date}
+        dateList={dateList}
+        onPressDate={onPressDate}
+      />
     </View>
   );
 };
@@ -48,6 +66,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     paddingHorizontal: 20,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
 
