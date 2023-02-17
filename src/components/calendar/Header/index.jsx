@@ -1,8 +1,18 @@
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import getMonthToString from '../../../utils/getMonthToString';
 import Icon from '../../public/Icon';
 
-const Header = ({ year, month, handlePrevMonth, handleNextMonth }) => {
+const Header = ({
+  year,
+  month,
+  handlePrevMonth,
+  handleNextMonth,
+}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handlePrevMonth}>
@@ -21,6 +31,8 @@ const Header = ({ year, month, handlePrevMonth, handleNextMonth }) => {
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
+    marginBottom: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
