@@ -1,10 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabData } from '../data/BottomTabData';
-import GetIcon from '../utils/GetIcon';
-import MyPage from '../screens/MyPage';
-import Home from '../screens/Home';
-import Calendar from '../screens/Calendar';
-import Library from '../screens/Library';
+import Icon from '../components/public/Icon';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +24,7 @@ const BottomTabNavigation = () => {
               options={{
                 tabBarShowLabel: menu.name,
                 tabBarIcon: (props) =>
-                  GetIcon({
+                  Icon({
                     ...props,
                     name: props.focused ? menu.activeIcon : menu.inActiveIcon,
                   }),
