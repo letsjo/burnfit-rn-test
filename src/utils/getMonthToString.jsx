@@ -1,19 +1,7 @@
+import { MONTH_STRING } from '../constants/Calendar';
+
 const getMonthToString = (month) => {
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  return monthNames[month - 1];
+  return MONTH_STRING[month - 1];
 };
 
 export default getMonthToString;
