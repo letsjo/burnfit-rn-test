@@ -1,10 +1,10 @@
 import { View, StyleSheet } from 'react-native';
-import CalenderSection from '../components/CalendarSection';
+import Calender from '../components/calendar/Calendar';
 
 const Calendar = () => {
   return (
     <View style={styles.container}>
-      <CalenderSection />
+      <Calender />
     </View>
   );
 };
